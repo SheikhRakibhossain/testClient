@@ -10,6 +10,7 @@ const App = () => {
 
 
   const handleForm = event => {
+
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -72,6 +73,7 @@ const App = () => {
               <TableColumn>Name</TableColumn>
               <TableColumn>STATUS</TableColumn>
               <TableColumn>Email</TableColumn>
+              <TableColumn>Action</TableColumn>
             </TableHeader>
             <TableBody>
               {users?.map(user => <TableRow key={user.id}
@@ -80,6 +82,7 @@ const App = () => {
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.status}</TableCell>
                 <TableCell>{user.email}</TableCell>
+                
               </TableRow>
 
               )}
