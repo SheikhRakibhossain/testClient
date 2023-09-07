@@ -10,8 +10,21 @@ const Update = () => {
         const name = form.name.value;
         const status = form.status.value;
         const email = form.email.value;
-        const user = { name, status, email }
-        console.log(user)
+        const UpdateUser = { name, status, email }
+        console.log(UpdateUser);
+        fetch(`http://localhost:5000/user/${loadedUser._id}`,{
+
+        method:'PUT',
+        headers:{
+            'content-type':'application/json'
+        },
+        body: JSON.stringify(UpdateUser)
+
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+        })
     }
 
     return (
