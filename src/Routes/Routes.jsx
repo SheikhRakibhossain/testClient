@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
         {
           path:'/update/:id',
           element:<Update/>,
-          loader:()=>fetch()
+          loader:({params})=>fetch(`http://localhost:5000/user/${params.id}`)
         }
 
       ]
