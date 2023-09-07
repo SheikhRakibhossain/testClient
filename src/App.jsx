@@ -1,13 +1,9 @@
-import { Button, Input, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
-import { useState } from "react";
+import { Button, Input} from "@nextui-org/react";
 import Swal from 'sweetalert2'
 
 // import { Form } from "react-router-dom";
 
 const App = () => {
-
-  const [users, setUsers] = useState([]);
-
 
   const handleForm = event => {
 
@@ -19,9 +15,9 @@ const App = () => {
     const email = form.email.value;
     const user = { name, status, email, password };
     console.log(user);
-    form.reset('')
+   
     fetch('http://localhost:5000/user', {
-      method: "POST",
+      method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
@@ -33,7 +29,7 @@ const App = () => {
       .then(data => {
         console.log(data);
         if(data.insertedId){
-          return Swal.fire({
+          Swal.fire({
             position: 'top-end',
             icon: 'success',
             title: 'The user has been added into our database.',
@@ -41,8 +37,8 @@ const App = () => {
             timer: 1500
           })
           
+          form.reset('')
         }
-
       })
       .catch(error => console.log(error.message))
 
@@ -64,33 +60,7 @@ const App = () => {
             </div>
           </form>
         </div>
-        <div className="px-4 py-6">
-          <h2 className="text-lg font-semibold">All users total:{users?.length}</h2>
-
-          <Table isStriped aria-label="Example static collection table">
-            <TableHeader>
-              <TableColumn>SL</TableColumn>
-              <TableColumn>Name</TableColumn>
-              <TableColumn>STATUS</TableColumn>
-              <TableColumn>Email</TableColumn>
-              <TableColumn>Action</TableColumn>
-            </TableHeader>
-            <TableBody>
-              {users?.map(user => <TableRow key={user.id}
-              >
-                <TableCell>{user.id}</TableCell>
-                <TableCell>{user.name}</TableCell>
-                <TableCell>{user.status}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                
-              </TableRow>
-
-              )}
-
-            </TableBody>
-
-          </Table>
-        </div>
+       
       </section>
     </>
   );
