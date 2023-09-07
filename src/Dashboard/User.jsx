@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 import Swal from "sweetalert2";
 import { useState } from "react";
@@ -42,7 +42,8 @@ const User = () => {
               <TableColumn>Name</TableColumn>
               <TableColumn>STATUS</TableColumn>
               <TableColumn>Email</TableColumn>
-              <TableColumn>Delete</TableColumn>
+              <TableColumn>Update Action</TableColumn>
+              <TableColumn>Delete Action</TableColumn>
             </TableHeader>
             <TableBody>
               {users.map((user, index) => <TableRow key={user._id}>
@@ -51,7 +52,8 @@ const User = () => {
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.status}</TableCell>
                 <TableCell>{user.email}</TableCell>
-                <TableCell> <Button onClick={()=>handleDelete(user._id)} size="sm">Delete</Button></TableCell>
+                <TableCell> <Link to={`/update/${user._id}`} color="success" size="sm"><Button color="success" className="text-white">Edit</Button></Link></TableCell>
+                <TableCell> <Button onClick={()=>handleDelete(user._id)} color="warning" size="sm">Delete</Button></TableCell>
               </TableRow>
 
               )}

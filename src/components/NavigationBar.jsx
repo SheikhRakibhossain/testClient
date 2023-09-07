@@ -1,6 +1,7 @@
 // import logo from "../assets/Globalimage/logo.png";
 import {  Navbar,   NavbarBrand,   NavbarContent,   NavbarItem, Button, Link} from "@nextui-org/react";
 import {AcmeLogo} from "./AcmeLogo.jsx";
+import { NavLink } from "react-router-dom";
 
 
 const NavigationBar = () => {
@@ -12,26 +13,20 @@ const NavigationBar = () => {
         <AcmeLogo />
         <p className="font-bold text-inherit">RAKIB</p>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className=" sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
+             <NavLink to='/user' > User</NavLink>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
+        <NavLink to='/app' > App</NavLink>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
+        <NavLink to='/update' > User Update</NavLink>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+        <NavLink to='/update' > Update User</NavLink>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="primary" href="#" variant="flat">
