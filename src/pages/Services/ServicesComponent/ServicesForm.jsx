@@ -2,13 +2,34 @@ import { Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form"
 
 const ServicesForm = () => {
-    const {
-        register,
-        handleSubmit,
+
+    const {register, handleSubmit,
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        console.log(data)
+        fetch('http://localhost:5000/services',{
+
+        method:'POST',
+        headers:{
+            'content-type':'application/json'
+        },
+        body: JSON.stringify(data)
+
+        })
+        .then( res=>res.json())
+        .then(data=>{
+            console.log(data)
+            if( data.insertedId ){
+                alert('services added successfully')
+                // useForm.reset('')
+            }
+        })
+        .catch(error=>console.log(error))
+    }
+
+
     return (
         <section className="container mx-auto border px-40">
             <div className=" flex flex-wrap justify-center items-center md:flex-nowrap gap-4 py-4">
