@@ -1,5 +1,6 @@
 import { Button, Input } from "@nextui-org/react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Update = () => {
 
@@ -12,7 +13,7 @@ const Update = () => {
         const email = form.email.value;
         const UpdateUser = { name, status, email }
         console.log(UpdateUser);
-        
+
         fetch(`http://localhost:5000/user/${loadedUser._id}`,{
 
         method:'PUT',
@@ -25,8 +26,15 @@ const Update = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
-            if(data.modifiedCountOne>0){
-                alert("user data updated")
+            if(data.modifiedCount>0){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'The user has been successfully updated.',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  form.reset('')
             }
         })
     }

@@ -52,7 +52,7 @@ const User = () => {
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.status}</TableCell>
                 <TableCell>{user.email}</TableCell>
-                <TableCell> <Link to={`/update/${user._id}`} color="success" size="sm"><Button color="success" className="text-white">Edit</Button></Link></TableCell>
+                <TableCell> <Link to={`/update/${user._id}`}><Button size="sm" color="success" className="text-white">Edit</Button></Link></TableCell>
                 <TableCell> <Button onClick={()=>handleDelete(user._id)} color="warning" size="sm">Delete</Button></TableCell>
               </TableRow>
 

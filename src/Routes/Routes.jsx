@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import App from "../App";
 import User from "../Dashboard/User";
 import Update from "../Dashboard/Update";
+import Services from "../pages/Services/Services";
 
 
 export const router = createBrowserRouter([
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
           path:'/update/:id',
           element:<Update/>,
           loader:({params})=>fetch(`http://localhost:5000/user/${params.id}`)
+        },
+        {
+          path:'/services',
+          element:<Services/>
         }
 
       ]
