@@ -21,7 +21,7 @@ const ServicesForm = () => {
         .then( res=>res.json())
         .then(data=>{
             console.log(data)
-            if( data.insertedId > 0 ){
+            if( data?.insertedId){
                 alert('services added successfully')
                 // useForm.reset('')
 
@@ -42,7 +42,7 @@ const ServicesForm = () => {
                         <Input type="text" variant="underlined" {...register("Category", { required: true })} />
                         <Input type="number" variant="underlined" {...register("Price", { required: true })} />
                         <Input type="text" variant="underlined" {...register("Details", { required: true })} />
-                        {errors.exampleRequired && <span>This field is required</span>}
+                        {errors.Category && <span>This field is required</span>}
                         <Input type="submit" value="Submit" />
 
                     </div>

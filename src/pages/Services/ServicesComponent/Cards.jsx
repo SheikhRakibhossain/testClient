@@ -1,9 +1,9 @@
-import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Link } from "@nextui-org/react";
-
+import { Button, Card, CardBody, CardFooter, CardHeader, Divider } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 const Cards = ({service, control, setControl}) => {
 
     const {serviceName, Price, Category, Details, _id} = service;
-    console.log(service)
+    // console.log(service)
 
 const handleDelete =(id)=>{
     fetch(`http://localhost:5000/services/${_id}`,{
@@ -36,14 +36,10 @@ const handleDelete =(id)=>{
                         </CardBody>
                         <Divider />
                         <CardFooter>
-                            <Link
-                                isExternal
-                                showAnchorIcon
-                                href="https://www.fiverr.com/rakib__101"
-                            >
+                            
                                 Visit source code on GitHub.
-                            </Link>
-                            <Button size="sm" color="primary">Edit</Button>
+                            
+                            <Link to={`/UpdateServices/${_id}`} ><Button size="sm" color="success" text="white">Edit</Button></Link>
                             <Button onClick={()=>handleDelete(_id)} size="sm" color="danger">Delete</Button>
                         </CardFooter>
                     </Card>
