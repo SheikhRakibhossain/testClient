@@ -21,9 +21,11 @@ const ServicesForm = () => {
         .then( res=>res.json())
         .then(data=>{
             console.log(data)
-            if( data.insertedId ){
+            if( data.insertedId > 0 ){
                 alert('services added successfully')
                 // useForm.reset('')
+
+                window.location.reload();
             }
         })
         .catch(error=>console.log(error))
